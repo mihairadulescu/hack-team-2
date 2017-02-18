@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Http.Tracing;
 using hack_team_2.Webhook.Models;
+// ReSharper disable InconsistentNaming
 
 namespace hack_team_2.Webhook.Controllers
 {
