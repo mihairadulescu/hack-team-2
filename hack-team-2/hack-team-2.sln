@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hack-team-2.OCR", "hack-team-2.OCR\hack-team-2.OCR.csproj", "{CF70D3CD-3478-42DF-82C7-B27725396B5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hack-team-2.OCR.Tests", "hack-team-2.OCR.Tests\hack-team-2.OCR.Tests.csproj", "{A061882A-E0DD-4855-9182-C4AC8855366A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF70D3CD-3478-42DF-82C7-B27725396B5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF70D3CD-3478-42DF-82C7-B27725396B5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF70D3CD-3478-42DF-82C7-B27725396B5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF70D3CD-3478-42DF-82C7-B27725396B5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A061882A-E0DD-4855-9182-C4AC8855366A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A061882A-E0DD-4855-9182-C4AC8855366A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A061882A-E0DD-4855-9182-C4AC8855366A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A061882A-E0DD-4855-9182-C4AC8855366A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
