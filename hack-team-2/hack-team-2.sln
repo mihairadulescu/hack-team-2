@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hack-team-2.OCR", "hack-tea
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hack-team-2.OCR.Tests", "hack-team-2.OCR.Tests\hack-team-2.OCR.Tests.csproj", "{A061882A-E0DD-4855-9182-C4AC8855366A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hack-team-2.sharepoint", "hack-team-2.sharepoint\hack-team-2.sharepoint.csproj", "{E8C6A43D-11C6-4487-A838-CB354663C8F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hack-team-2.Webhook", "hack-team-2.Webhook\hack-team-2.Webhook.csproj", "{630DD6CF-BE2A-451B-9386-E65148357995}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{A061882A-E0DD-4855-9182-C4AC8855366A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A061882A-E0DD-4855-9182-C4AC8855366A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A061882A-E0DD-4855-9182-C4AC8855366A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8C6A43D-11C6-4487-A838-CB354663C8F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8C6A43D-11C6-4487-A838-CB354663C8F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8C6A43D-11C6-4487-A838-CB354663C8F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8C6A43D-11C6-4487-A838-CB354663C8F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{630DD6CF-BE2A-451B-9386-E65148357995}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{630DD6CF-BE2A-451B-9386-E65148357995}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{630DD6CF-BE2A-451B-9386-E65148357995}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{630DD6CF-BE2A-451B-9386-E65148357995}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

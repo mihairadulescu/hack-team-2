@@ -14,6 +14,7 @@ namespace hack_team_2.OCR.Tests
         {
             subscriptionKey = File.ReadAllText("Data\\TestSubscriptionKey.txt");
         }
+
         [Test]
         public async void Given_an_image_with_text_the_text_is_extracted()
         {
