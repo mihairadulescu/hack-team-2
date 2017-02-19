@@ -35,16 +35,15 @@ namespace hack_team_2.sharepoint
                 foreach (Change change in documentChanges)
                 {
                     Console.WriteLine("{0}-{1}", change.ChangeType, change.TypedObject);
-                    if(change is ChangeFile)
+                    
+                    if(change is ChangeItem)
                     {
-                        var fileChange = change as ChangeFile;
-                       
-                        Console.WriteLine("{0}", fileChange.UniqueId);
-                        var file = context.Web.GetFileById(fileChange.UniqueId);
-                        context.Load(file, f => f.Name);
-                        
+                        var itemChange = change as ChangeItem;
+                        ListItem li = documents.GetItemById(itemChange.ItemId);
+                        context.Load(li, i=>i.File);
                         context.ExecuteQuery();
-                        Console.WriteLine("{0}", file.Name);
+                        if(li.File != null)
+                            Console.WriteLine("{0}", li.File.Name);
                     }
                 }
             }
@@ -55,7 +54,7 @@ namespace hack_team_2.sharepoint
         private static ChangeQuery OnlyNewDocuments()
         {
             ChangeQuery documentChangeQuery = new ChangeQuery(false, false);
-            documentChangeQuery.File = true;
+            documentChangeQuery.Item = true;
             documentChangeQuery.Add = true;
             return documentChangeQuery;
         }
