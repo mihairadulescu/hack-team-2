@@ -72,7 +72,8 @@ namespace hack_team_2.sharepoint
                 var newFile = new FileCreationInformation
                 {
                     Content = File.ReadAllBytes(wordDocumentFilePath),
-                    Url = Path.GetFileName(wordDocumentFilePath)
+                    Url = Path.GetFileName(wordDocumentFilePath),
+                    Overwrite = true
                 };
                 var documents = web.Lists.GetByTitle("OCR");
                 Microsoft.SharePoint.Client.File addedDocument = documents.RootFolder.Files.Add(newFile);
