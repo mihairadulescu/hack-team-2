@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DocX, Version=1.0.0.22, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocX.1.0.0.22\lib\net40\DocX.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.SharePoint.Client, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SharePoint2013.Client.x86.15.0.4481.1504\lib\Microsoft.SharePoint.Client.dll</HintPath>
       <Private>True</Private>
@@ -41,6 +45,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,18 +54,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\CognitiveServicesConnectionData.cs" />
     <Compile Include="DocumentOperation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SharepointConnectionData.cs" />
+    <Compile Include="Config\SharepointConnectionData.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\hack-team-2.OCR\hack-team-2.OCR.csproj">
       <Project>{CF70D3CD-3478-42DF-82C7-B27725396B5A}</Project>
       <Name>hack-team-2.OCR</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Document\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
