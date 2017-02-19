@@ -40,6 +40,11 @@ namespace hack_team_2.sharepoint
                         var fileChange = change as ChangeFile;
                        
                         Console.WriteLine("{0}", fileChange.UniqueId);
+                        var file = context.Web.GetFileById(fileChange.UniqueId);
+                        context.Load(file, f => f.Name);
+                        
+                        context.ExecuteQuery();
+                        Console.WriteLine("{0}", file.Name);
                     }
                 }
             }
