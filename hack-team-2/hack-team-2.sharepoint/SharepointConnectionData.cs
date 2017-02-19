@@ -12,7 +12,7 @@ namespace hack_team_2.sharepoint
             get
             {
                 var password = new SecureString();
-                foreach (var c in ConfigurationManager.AppSettings["SharepointUrl"])
+                foreach (var c in ConfigurationManager.AppSettings["Password"])
                 {
                     password.AppendChar(c);
                 }

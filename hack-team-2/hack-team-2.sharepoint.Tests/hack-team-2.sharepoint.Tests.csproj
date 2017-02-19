@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A061882A-E0DD-4855-9182-C4AC8855366A}</ProjectGuid>
+    <ProjectGuid>{A6FA8430-073C-474C-A0D1-6B6EF12183D2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>hack_team_2.OCR.Tests</RootNamespace>
-    <AssemblyName>hack-team-2.OCR.Tests</AssemblyName>
+    <RootNamespace>hack_team_2.sharepoint.Tests</RootNamespace>
+    <AssemblyName>hack-team-2.sharepoint.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -44,26 +44,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OcrCoreTests.cs" />
+    <Compile Include="DocumentOperationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+    <Content Include="Data\test.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\hack-team-2.OCR\hack-team-2.OCR.csproj">
-      <Project>{CF70D3CD-3478-42DF-82C7-B27725396B5A}</Project>
-      <Name>hack-team-2.OCR</Name>
+    <ProjectReference Include="..\hack-team-2.sharepoint\hack-team-2.sharepoint.csproj">
+      <Project>{E8C6A43D-11C6-4487-A838-CB354663C8F4}</Project>
+      <Name>hack-team-2.sharepoint</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\test.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\testExpected.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\TestSubscriptionKey.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

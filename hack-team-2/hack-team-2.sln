@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hack-team-2.sharepoint", "h
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hack-team-2.Webhook", "hack-team-2.Webhook\hack-team-2.Webhook.csproj", "{630DD6CF-BE2A-451B-9386-E65148357995}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hack-team-2.sharepoint.Tests", "hack-team-2.sharepoint.Tests\hack-team-2.sharepoint.Tests.csproj", "{A6FA8430-073C-474C-A0D1-6B6EF12183D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{630DD6CF-BE2A-451B-9386-E65148357995}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{630DD6CF-BE2A-451B-9386-E65148357995}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{630DD6CF-BE2A-451B-9386-E65148357995}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6FA8430-073C-474C-A0D1-6B6EF12183D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6FA8430-073C-474C-A0D1-6B6EF12183D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6FA8430-073C-474C-A0D1-6B6EF12183D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6FA8430-073C-474C-A0D1-6B6EF12183D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
