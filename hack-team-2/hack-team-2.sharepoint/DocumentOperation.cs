@@ -63,7 +63,7 @@ namespace hack_team_2.sharepoint
             throw new Exception("exception thrown from ExtractTextFromImage");
         }
 
-        private void UploadDocumentToSharepoint(string wordDocumentFilePath, string textFromImage)
+        public void UploadDocumentToSharepoint(string wordDocumentFilePath, string textFromImage)
         {
             using (var context = new ClientContext(SharepointConnectionData.WebFullUrl))
             {
@@ -74,13 +74,45 @@ namespace hack_team_2.sharepoint
                     Content = File.ReadAllBytes(wordDocumentFilePath),
                     Url = Path.GetFileName(wordDocumentFilePath)
                 };
-                var documents = web.Lists.GetByTitle("Documents");
+                var documents = web.Lists.GetByTitle("OCR");
                 Microsoft.SharePoint.Client.File addedDocument = documents.RootFolder.Files.Add(newFile);
                 var item = addedDocument.ListItemAllFields;
                 item["OCR"] = textFromImage;
                 item.Update();
 
                 context.ExecuteQuery();
+            }
+        }
+
+        public byte[] DownloadFile(string fileName)
+        {
+            byte[] fileAsByte;
+            Uri filename = new Uri(string.Format(@"{0}ocr/{1}", SharepointConnectionData.WebFullUrl, fileName));
+            string server = filename.AbsoluteUri.Replace(filename.AbsolutePath, "");
+            string serverrelative = filename.AbsolutePath;
+
+            using (var context = new ClientContext(SharepointConnectionData.WebFullUrl))
+            {
+                context.Credentials = new SharePointOnlineCredentials(SharepointConnectionData.Username, SharepointConnectionData.Password);
+                var web = context.Web;
+                if (context.HasPendingRequest)
+                    context.ExecuteQuery();
+
+                using (FileInformation fileInformation = Microsoft.SharePoint.Client.File.OpenBinaryDirect(context, serverrelative))
+                {
+                    fileAsByte = ReadAsByte(fileInformation.Stream);
+                }
+            }
+
+            return fileAsByte;
+        }
+
+        private static byte[] ReadAsByte(Stream input)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                input.CopyTo(ms);
+                return ms.ToArray();
             }
         }
     }
