@@ -5,6 +5,7 @@ using hack_team_2.OCR;
 using hack_team_2.sharepoint.Config;
 using Microsoft.SharePoint.Client;
 using File = System.IO.File;
+using Novacode;
 
 namespace hack_team_2.sharepoint
 {
@@ -20,7 +21,27 @@ namespace hack_team_2.sharepoint
 
         private string CreateWordDocumentWithImage(string imageFilePath)
         {
-            throw new NotImplementedException();
+            string documentPath = @"Document\\InsertedImage.docx";
+            using (var document = DocX.Create(documentPath))
+            {
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    var image = System.Drawing.Image.FromFile(imageFilePath);
+
+                    image.Save(memoryStream, image.RawFormat);
+                    memoryStream.Seek(0, SeekOrigin.Begin);
+
+                    Image documentPicture = document.AddImage(memoryStream);
+
+                    Paragraph paragraph = document.InsertParagraph();
+                    Picture picture = documentPicture.CreatePicture();
+
+                    paragraph.InsertPicture(picture, 0);
+
+                    document.Save();
+                }
+            }
+            return documentPath;
         }
 
         private async Task<string> ExtractTextFromImage(string imageFilePath)
