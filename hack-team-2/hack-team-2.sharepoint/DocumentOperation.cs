@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Configuration;
 using System.IO;
 using System.Threading.Tasks;
 using hack_team_2.OCR;
@@ -13,10 +12,29 @@ namespace hack_team_2.sharepoint
     {
         public async void UploadImageAsWordDocument(string imageFilePath)
         {
-            string wordDocumentFilePath = CreateWordDocument(imageFilePath);
+            string wordDocumentFilePath = CreateWordDocumentWithImage(imageFilePath);
             string textFromImage = await ExtractTextFromImage(imageFilePath);
 
             UploadDocumentToSharepoint(wordDocumentFilePath, textFromImage);
+        }
+
+        private string CreateWordDocumentWithImage(string imageFilePath)
+        {
+            throw new NotImplementedException();
+        }
+
+        private async Task<string> ExtractTextFromImage(string imageFilePath)
+        {
+            string subscriptionKey = CognitiveServicesConnectionData.SubscriptionKey;
+            var ocrCore = new OcrCore(subscriptionKey);
+
+            using (Stream imageStream = new FileStream(imageFilePath, FileMode.Open))
+            {
+                string text = await ocrCore.ExtractTextFromImage(imageStream, "unk");
+                return text;
+            }
+
+            throw new Exception("exception thrown from ExtractTextFromImage");
         }
 
         private void UploadDocumentToSharepoint(string wordDocumentFilePath, string textFromImage)
@@ -29,35 +47,15 @@ namespace hack_team_2.sharepoint
                 {
                     Content = File.ReadAllBytes(wordDocumentFilePath),
                     Url = Path.GetFileName(wordDocumentFilePath)
-
                 };
-                var docs = web.Lists.GetByTitle("Documents");
-                Microsoft.SharePoint.Client.File doc = docs.RootFolder.Files.Add(newFile);
-                var item = doc.ListItemAllFields;
+                var documents = web.Lists.GetByTitle("Documents");
+                Microsoft.SharePoint.Client.File addedDocument = documents.RootFolder.Files.Add(newFile);
+                var item = addedDocument.ListItemAllFields;
                 item["OCR"] = textFromImage;
                 item.Update();
 
                 context.ExecuteQuery();
             }
-        }
-
-        private string CreateWordDocument(string imageFilePath)
-        {
-            throw new NotImplementedException();
-        }
-
-        private async Task<string> ExtractTextFromImage(string imageFilePath)
-        {
-            string subscriptionKey = CognitiveServicesConnectionData.SubscriptionKey;
-            OcrCore ocrCore = new OcrCore(subscriptionKey);
-
-            using (Stream imageStream = new FileStream(imageFilePath, FileMode.Open))
-            {
-                string text = await ocrCore.ExtractTextFromImage(imageStream, "unk");
-                return text;
-            }
-
-            throw new Exception("exception thrown from ExtractTextFromImage");
         }
     }
 }
