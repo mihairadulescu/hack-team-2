@@ -1,4 +1,10 @@
-﻿using NUnit.Framework;
+﻿using hack_team_2.sharepoint;
+using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace hack_team_2.sharepoint.Tests
 {
@@ -6,10 +12,24 @@ namespace hack_team_2.sharepoint.Tests
     public class DocumentOperationTests
     {
         [Test]
-        public async void Given_an_image_with_text_calling_UploadImageAsWordDocument_will_add_file_to_Sharepoint()
+        public void Given_an_word_document_the_upload_is_successfull()
         {
             var documentOperation = new DocumentOperation();
-            await documentOperation.UploadImageAsWordDocument(@"Data\\test.jpg");
+            documentOperation.UploadDocumentToSharepoint(@"Data\test.docx", "A GOAL WITHOUT");
+        }
+
+        [Test]
+        public void Given_an_image_document_the_upload_is_successfull()
+        {
+            var documentOperation = new DocumentOperation();
+            documentOperation.UploadDocumentToSharepoint(@"Data\test.jpg", "A GOAL WITHOUT");
+        }
+
+        [Test]
+        public void Given_an_image_document_the_download_is_successfull()
+        {
+            var documentOperation = new DocumentOperation();
+            documentOperation.DownloadFile("test.jpg");
         }
     }
 }
