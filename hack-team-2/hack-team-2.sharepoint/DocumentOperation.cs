@@ -15,7 +15,7 @@ namespace hack_team_2.sharepoint
 {
     public class DocumentOperation
     {
-        public async void UploadImageAsWordDocument(string imageFilePath)
+        public async Task UploadImageAsWordDocument(string imageFilePath)
         {
             string wordDocumentFilePath = CreateWordDocumentWithImage(imageFilePath);
             string textFromImage = await ExtractTextFromImage(imageFilePath);
@@ -31,19 +31,20 @@ namespace hack_team_2.sharepoint
             {
                 using (var memoryStream = new MemoryStream())
                 {
-                    var image = Image.FromFile(imageFilePath);
+                    using (var image = Image.FromFile(imageFilePath))
+                    {
+                        image.Save(memoryStream, image.RawFormat);
+                        memoryStream.Seek(0, SeekOrigin.Begin);
 
-                    image.Save(memoryStream, image.RawFormat);
-                    memoryStream.Seek(0, SeekOrigin.Begin);
+                        Novacode.Image documentPicture = document.AddImage(memoryStream);
 
-                    Novacode.Image documentPicture = document.AddImage(memoryStream);
+                        Paragraph paragraph = document.InsertParagraph();
+                        Picture picture = documentPicture.CreatePicture();
 
-                    Paragraph paragraph = document.InsertParagraph();
-                    Picture picture = documentPicture.CreatePicture();
+                        paragraph.InsertPicture(picture, index: 0);
 
-                    paragraph.InsertPicture(picture, index: 0);
-
-                    document.Save();
+                        document.Save();
+                    }
                 }
             }
             return documentPath;
