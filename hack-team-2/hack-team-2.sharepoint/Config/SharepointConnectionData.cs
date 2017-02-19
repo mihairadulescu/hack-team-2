@@ -1,7 +1,7 @@
 ﻿using System.Configuration;
 using System.Security;
 
-namespace hack_team_2.sharepoint
+namespace hack_team_2.sharepoint.Config
 {
     public class SharepointConnectionData
     {
@@ -12,9 +12,9 @@ namespace hack_team_2.sharepoint
             get
             {
                 var password = new SecureString();
-                foreach (var c in ConfigurationManager.AppSettings["SharepointUrl"])
+                foreach (var character in ConfigurationManager.AppSettings["SharepointUrl"])
                 {
-                    password.AppendChar(c);
+                    password.AppendChar(character);
                 }
                 return password;
             }

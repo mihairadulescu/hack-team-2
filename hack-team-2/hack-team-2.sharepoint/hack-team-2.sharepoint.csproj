@@ -49,9 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\CognitiveServicesConnectionData.cs" />
     <Compile Include="DocumentOperation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SharepointConnectionData.cs" />
+    <Compile Include="Config\SharepointConnectionData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

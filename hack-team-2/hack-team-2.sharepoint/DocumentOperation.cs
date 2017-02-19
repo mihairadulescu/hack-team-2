@@ -3,6 +3,7 @@ using System.Configuration;
 using System.IO;
 using System.Threading.Tasks;
 using hack_team_2.OCR;
+using hack_team_2.sharepoint.Config;
 using Microsoft.SharePoint.Client;
 using File = System.IO.File;
 
@@ -47,7 +48,7 @@ namespace hack_team_2.sharepoint
 
         private async Task<string> ExtractTextFromImage(string imageFilePath)
         {
-            string subscriptionKey = LoadSubscriptionKey();
+            string subscriptionKey = CognitiveServicesConnectionData.SubscriptionKey;
             OcrCore ocrCore = new OcrCore(subscriptionKey);
 
             using (Stream imageStream = new FileStream(imageFilePath, FileMode.Open))
@@ -57,11 +58,6 @@ namespace hack_team_2.sharepoint
             }
 
             throw new Exception("exception thrown from ExtractTextFromImage");
-        }
-
-        private string LoadSubscriptionKey()
-        {
-            return ConfigurationManager.AppSettings["OcrSubscriptionKey"];
         }
     }
 }
