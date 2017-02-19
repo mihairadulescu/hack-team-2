@@ -4,8 +4,12 @@ using System.Threading.Tasks;
 using hack_team_2.OCR;
 using hack_team_2.sharepoint.Config;
 using Microsoft.SharePoint.Client;
-using File = System.IO.File;
 using Novacode;
+using File = System.IO.File;
+using Image = System.Drawing.Image;
+
+// ReSharper disable RedundantArgumentDefaultValue
+// ReSharper disable RedundantArgumentNameForLiteralExpression
 
 namespace hack_team_2.sharepoint
 {
@@ -21,22 +25,23 @@ namespace hack_team_2.sharepoint
 
         private string CreateWordDocumentWithImage(string imageFilePath)
         {
-            string documentPath = @"Document\\InsertedImage.docx";
+            var imageFileName = Path.GetFileNameWithoutExtension(imageFilePath);
+            string documentPath = $@"Document\\{imageFileName}.docx";
             using (var document = DocX.Create(documentPath))
             {
-                using (MemoryStream memoryStream = new MemoryStream())
+                using (var memoryStream = new MemoryStream())
                 {
-                    var image = System.Drawing.Image.FromFile(imageFilePath);
+                    var image = Image.FromFile(imageFilePath);
 
                     image.Save(memoryStream, image.RawFormat);
                     memoryStream.Seek(0, SeekOrigin.Begin);
 
-                    Image documentPicture = document.AddImage(memoryStream);
+                    Novacode.Image documentPicture = document.AddImage(memoryStream);
 
                     Paragraph paragraph = document.InsertParagraph();
                     Picture picture = documentPicture.CreatePicture();
 
-                    paragraph.InsertPicture(picture, 0);
+                    paragraph.InsertPicture(picture, index: 0);
 
                     document.Save();
                 }
